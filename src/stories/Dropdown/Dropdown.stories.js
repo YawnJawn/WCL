@@ -2,10 +2,12 @@
 import React from 'react';
 import Dropdown from './Dropdown';
 
-export default {
+const dropdownStories = { 
   title: 'Components/Dropdown',
   component: Dropdown,
 };
+
+export default dropdownStories;
 
 const Template = (args) => <Dropdown {...args} />;
 

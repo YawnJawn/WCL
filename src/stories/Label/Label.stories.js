@@ -1,11 +1,14 @@
 // Label.stories.js
 import React from 'react';
 import Label from './Label';
+import { background } from 'storybook/internal/theming';
 
-export default {
+const labelStories = { 
   title: 'Components/Label',
   component: Label,
 };
+
+export default labelStories;
 
 const Template = (args) => <Label {...args} />;
 
@@ -13,20 +16,6 @@ export const Default = Template.bind({});
 Default.args = {
   text: 'Default Label',
   color: 'black',
-  size: '16px',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  text: 'Large Label',
-  color: 'black',
-  size: '32px',
-};
-
-export const Colored = Template.bind({});
-Colored.args = {
-  text: 'Colored Label',
-  color: 'blue',
   size: '16px',
 };
 

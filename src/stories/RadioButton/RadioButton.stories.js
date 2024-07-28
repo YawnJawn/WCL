@@ -2,10 +2,12 @@
 import React from 'react';
 import RadioButton from './RadioButton';
 
-export default {
+const radiobuttonStories = { 
   title: 'Components/RadioButton',
   component: RadioButton,
 };
+
+export default radiobuttonStories;
 
 const Template = (args) => <RadioButton {...args} />;
 

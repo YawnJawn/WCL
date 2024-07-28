@@ -6,8 +6,17 @@ import './Button.css'; // Optional CSS for styling
 const Button = ({ label, onClick, primary, disabled }) => {
   const className = primary ? 'button button--primary' : 'button';
 
+  const inlineStyle = {
+    backgroundColor: disabled ? 'gray' : primary ? 'blue' : 'white',
+    color: disabled ? 'darkgray' : 'black',
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '5px',
+  };
+
   return (
-    <button className={className} onClick={onClick} disabled={disabled}>
+    <button className={className} style={inlineStyle} onClick={onClick} disabled={disabled}>
       {label}
     </button>
   );

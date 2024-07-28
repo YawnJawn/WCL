@@ -2,10 +2,12 @@
 import React from 'react';
 import Text from './Text';
 
-export default {
+const textStories = { 
   title: 'Components/Text',
   component: Text,
 };
+
+export default textStories;
 
 const Template = (args) => <Text {...args} />;
 

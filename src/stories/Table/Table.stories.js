@@ -2,10 +2,12 @@
 import React from 'react';
 import Table from './Table';
 
-export default {
+const tableStories = { 
   title: 'Components/Table',
   component: Table,
 };
+
+export default tableStories;
 
 const Template = (args) => <Table {...args} />;
 

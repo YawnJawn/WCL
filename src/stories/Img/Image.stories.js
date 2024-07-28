@@ -2,10 +2,12 @@
 import React from 'react';
 import Image from './Image';
 
-export default {
+const imageStories = { 
   title: 'Components/Image',
   component: Image,
 };
+
+export default imageStories;
 
 const Template = (args) => <Image {...args} />;
 

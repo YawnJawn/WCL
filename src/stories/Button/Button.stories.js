@@ -2,10 +2,12 @@
 import React from 'react';
 import Button from './Button';
 
-export default {
+const buttonStories = { 
   title: 'Components/Button',
   component: Button,
 };
+
+export default buttonStories;
 
 const Template = (args) => <Button {...args} />;
 

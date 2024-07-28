@@ -2,10 +2,12 @@
 import React from 'react';
 import HeroImage from './HeroImage';
 
-export default {
+const heroimageStories = { 
   title: 'Components/HeroImage',
   component: HeroImage,
 };
+
+export default heroimageStories;
 
 const Template = (args) => <HeroImage {...args} />;
 
