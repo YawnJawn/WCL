@@ -1,36 +1,40 @@
 // Dropdown.stories.js
 import React from 'react';
 import Dropdown from './Dropdown';
+import './Dropdown.css';
 
-const dropdownStories = { 
+export default {
   title: 'Components/Dropdown',
   component: Dropdown,
 };
 
-export default dropdownStories;
-
 const Template = (args) => <Dropdown {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   options: [
-    { label: 'Option 1', value: 'option1' },
-    { label: 'Option 2', value: 'option2' },
-    { label: 'Option 3', value: 'option3' },
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
   ],
-  placeholder: 'Select an option...',
-  backgroundColor: 'white',
+  placeholder: 'Choose',
+  textColor: 'white', // Custom text color for primary state
+  background: 'blue',
+  primary: true,
   disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   options: [
-    { label: 'Option 1', value: 'option1' },
-    { label: 'Option 2', value: 'option2' },
-    { label: 'Option 3', value: 'option3' },
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
   ],
-  placeholder: 'Select an option...',
-  backgroundColor: 'lightgray',
+  placeholder: 'Choose',
+  textColor: 'darkgray', // Custom text color for disabled state
+  background: 'gray',
+  primary: false,
   disabled: true,
 };
+

@@ -2,38 +2,25 @@
 import React from 'react';
 import RadioButton from './RadioButton';
 
-const radiobuttonStories = { 
+export default {
   title: 'Components/RadioButton',
   component: RadioButton,
 };
 
-export default radiobuttonStories;
-
 const Template = (args) => <RadioButton {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Default Option',
-  name: 'radio-group',
-  checked: false,
-  backgroundColor: 'transparent',
-  disabled: false,
-};
-
-export const Checked = Template.bind({});
-Checked.args = {
-  label: 'Checked Option',
-  name: 'radio-group',
-  checked: true,
-  backgroundColor: 'transparent',
+export const Primary = Template.bind({});
+Primary.args = {
+  label: 'Primary Radio Button',
+  backgroundColor: 'lightblue',
+  primary: true,
   disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  label: 'Disabled Option',
-  name: 'radio-group',
-  checked: false,
-  backgroundColor: 'lightgray',
+  label: 'Disabled Radio Button',
+  backgroundColor: 'gray',
+  primary: false,
   disabled: true,
 };

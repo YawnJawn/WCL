@@ -18,20 +18,6 @@ Default.args = {
   size: '16px',
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  content: 'Large Text',
-  color: 'black',
-  size: '32px',
-};
-
-export const Colored = Template.bind({});
-Colored.args = {
-  content: 'Colored Text',
-  color: 'blue',
-  size: '16px',
-};
-
 export const Disabled = Template.bind({});
 Disabled.args = {
   content: 'Disabled Text',

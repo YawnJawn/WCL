@@ -1,39 +1,31 @@
 // Image.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Image.css';
+import './Image.css'; // Optional CSS for additional styling
 
-const Image = ({
-  src,
-  alt,
-  width,
-  height,
-  disabled,
-  borderWidth,
-  borderColor,
-}) => {
-  const placeholder = 'https://via.placeholder.com/150'; // Placeholder image URL
-
-  const containerStyle = {
-    width,
-    height,
-    borderWidth,
-    borderColor,
+const Image = ({ src, alt, text, borderColor, primary, disabled }) => {
+  const inlineStyle = {
+    borderColor: disabled ? 'gray' : borderColor || (primary ? 'blue' : 'black'),
     borderStyle: 'solid',
+    borderWidth: '2px',
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    display: 'block',
+    margin: '0 auto',
+    padding: '10px',
+    boxSizing: 'border-box',
   };
 
   return (
-    <div
-      className={`image-container ${disabled ? 'disabled' : ''}`}
-      style={containerStyle}
-    >
-      <img
-        src={disabled ? placeholder : src}
-        alt={alt}
-        className="image"
-        style={{ width, height }}
-        aria-disabled={disabled}
-      />
+    <div style={{ textAlign: 'center' }}>
+      <img src={src} alt={alt} style={{ ...inlineStyle, display: 'inline-block' }} />
+      <div
+        style={{
+          color: disabled ? 'gray' : 'black',
+          marginTop: '8px',
+        }}
+      >
+        {text}
+      </div>
     </div>
   );
 };
@@ -41,19 +33,17 @@ const Image = ({
 Image.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  width: PropTypes.string,
-  height: PropTypes.string,
-  disabled: PropTypes.bool,
-  borderWidth: PropTypes.string,
+  text: PropTypes.string,
   borderColor: PropTypes.string,
+  primary: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 Image.defaultProps = {
-  width: '150px',
-  height: '150px',
+  text: '',
+  borderColor: 'black',
+  primary: false,
   disabled: false,
-  borderWidth: '1px',
-  borderColor: '#ccc',
 };
 
 export default Image;

@@ -9,7 +9,6 @@ const Label = ({ text, color, size, disabled, primary }) => {
     fontSize: size,
     backgroundColor: disabled ? 'gray' : primary ? 'blue' : 'white',
     cursor: disabled ? 'not-allowed' : 'default',
-    pointerEvents: disabled ? 'none' : 'auto', // Prevents clicks if disabled
     opacity: disabled ? 0.5 : 1,
   };
 

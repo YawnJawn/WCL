@@ -2,23 +2,20 @@
 import React from 'react';
 import Image from './Image';
 
-const imageStories = { 
+export default {
   title: 'Components/Image',
   component: Image,
 };
 
-export default imageStories;
-
 const Template = (args) => <Image {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   src: 'https://via.placeholder.com/150',
-  alt: 'Default Image',
-  width: '150px',
-  height: '150px',
-  borderWidth: '1px',
-  borderColor: '#ccc',
+  alt: 'Primary Image',
+  text: 'Primary Image',
+  borderColor: 'blue',
+  primary: true,
   disabled: false,
 };
 
@@ -26,9 +23,8 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   src: 'https://via.placeholder.com/150',
   alt: 'Disabled Image',
-  width: '150px',
-  height: '150px',
-  borderWidth: '1px',
-  borderColor: '#ccc',
+  text: 'Disabled Image',
+  borderColor: 'gray',
+  primary: false,
   disabled: true,
 };

@@ -1,52 +1,39 @@
 // HeroImage.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
-import './HeroImage.css';
+import './HeroImage.css'; // Optional CSS for styling
 
-const HeroImage = ({
-  imageSrc,
-  title,
-  subtitle,
-  buttonText,
-  backgroundColor,
-  disabled,
-  onButtonClick,
-}) => {
+const HeroImage = ({ label, background, primary, disabled, textColor }) => {
+  const inlineStyle = {
+    backgroundColor: disabled ? 'gray' : background || (primary ? 'blue' : 'white'),
+    cursor: disabled ? 'not-allowed' : 'default',
+    color: textColor || 'black', // Default text color set to black
+    padding: '50px',
+    textAlign: 'center',
+    borderRadius: '10px',
+    transition: 'background-color 0.3s ease, color 0.3s ease', // Smooth transition for color change
+  };
+
   return (
-    <div
-      className={`hero-image-container ${disabled ? 'disabled' : ''}`}
-      style={{ backgroundImage: `url(${imageSrc})`, backgroundColor }}
-    >
-      <div className="hero-content">
-        {title && <h1 className="hero-title">{title}</h1>}
-        {subtitle && <h2 className="hero-subtitle">{subtitle}</h2>}
-        {buttonText && !disabled && (
-          <button className="hero-button" onClick={onButtonClick}>
-            {buttonText}
-          </button>
-        )}
-      </div>
+    <div className="hero-image-container" style={inlineStyle}>
+      <h1>{label}</h1>
     </div>
   );
 };
 
 HeroImage.propTypes = {
-  imageSrc: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  buttonText: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  background: PropTypes.string,
+  primary: PropTypes.bool,
   disabled: PropTypes.bool,
-  onButtonClick: PropTypes.func,
+  textColor: PropTypes.string, // New prop for text color
 };
 
 HeroImage.defaultProps = {
-  title: '',
-  subtitle: '',
-  buttonText: '',
-  backgroundColor: 'transparent',
+  background: '',
+  primary: false,
   disabled: false,
-  onButtonClick: () => {},
+  textColor: 'black', // Default text color is black
 };
 
 export default HeroImage;

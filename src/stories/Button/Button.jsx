@@ -3,12 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.css'; // Optional CSS for styling
 
-const Button = ({ label, onClick, primary, disabled }) => {
+const Button = ({ label, onClick, primary, disabled, textColor }) => {
   const className = primary ? 'button button--primary' : 'button';
 
   const inlineStyle = {
     backgroundColor: disabled ? 'gray' : primary ? 'blue' : 'white',
-    color: disabled ? 'darkgray' : 'black',
+    color: disabled ? 'darkgray' : textColor || 'black',
     cursor: disabled ? 'not-allowed' : 'pointer',
     padding: '10px 20px',
     border: 'none',
@@ -27,6 +27,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   primary: PropTypes.bool,
   disabled: PropTypes.bool,
+  textColor: PropTypes.string,
 };
 
 Button.defaultProps = {

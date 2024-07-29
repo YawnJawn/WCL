@@ -1,30 +1,30 @@
 // Dropdown.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Dropdown.css';
+import './Dropdown.css'; // Optional CSS for styling
 
-const Dropdown = ({
-  options,
-  onChange,
-  disabled,
-  placeholder,
-  backgroundColor,
-}) => {
-  const styles = {
-    backgroundColor,
+const Dropdown = ({ options, textColor, background, primary, disabled, placeholder }) => {
+  const inlineStyle = {
+    backgroundColor: disabled ? 'gray' : background || (primary ? 'blue' : 'white'),
+    color: textColor || 'black', // Default text color set to black
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    padding: '10px',
+    borderRadius: '5px',
+    transition: 'background-color 0.3s ease, color 0.3s ease',
+    border: '1px solid #ccc', // Adding a border for better visibility
+    width: '100%',
+    boxSizing: 'border-box'
   };
 
   return (
     <select
-      onChange={onChange}
-      disabled={disabled}
+      style={inlineStyle}
       className="dropdown"
+      disabled={disabled}
       defaultValue=""
-      style={styles}
+      aria-label="custom-dropdown"
     >
-      <option value="" disabled>
-        {placeholder}
-      </option>
+      <option value="" disabled>{placeholder}</option>
       {options.map((option, index) => (
         <option key={index} value={option.value}>
           {option.label}
@@ -37,21 +37,23 @@ const Dropdown = ({
 Dropdown.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
     })
   ).isRequired,
-  onChange: PropTypes.func,
+  textColor: PropTypes.string,
+  background: PropTypes.string,
+  primary: PropTypes.bool,
   disabled: PropTypes.bool,
   placeholder: PropTypes.string,
-  backgroundColor: PropTypes.string,
 };
 
 Dropdown.defaultProps = {
-  onChange: () => {},
+  textColor: 'black',
+  background: '',
+  primary: false,
   disabled: false,
-  placeholder: 'Select an option...',
-  backgroundColor: 'white',
+  placeholder: 'Select an option',
 };
 
 export default Dropdown;

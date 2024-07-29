@@ -2,33 +2,27 @@
 import React from 'react';
 import HeroImage from './HeroImage';
 
-const heroimageStories = { 
+export default {
   title: 'Components/HeroImage',
   component: HeroImage,
 };
 
-export default heroimageStories;
-
 const Template = (args) => <HeroImage {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  imageSrc: 'https://via.placeholder.com/1600x400',
-  title: 'Welcome to Our Site',
-  subtitle: 'Discover Amazing Things',
-  buttonText: 'Learn More',
-  backgroundColor: 'transparent',
+export const Primary = Template.bind({});
+Primary.args = {
+  label: 'Primary Hero Image',
+  background: '', // Will use the default primary color if not specified
+  primary: true,
   disabled: false,
-  onButtonClick: () => alert('Button clicked!'),
+  textColor: 'black', 
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  imageSrc: 'https://via.placeholder.com/1600x400',
-  title: 'Disabled Hero',
-  subtitle: 'This hero image is disabled',
-  buttonText: 'Cannot Click',
-  backgroundColor: 'transparent',
+  label: 'Disabled Hero Image',
+  background: '',
+  primary: false,
   disabled: true,
-  onButtonClick: () => alert('Button clicked!'),
+  textColor: 'darkgray', // Set text color to dark gray for disabled state
 };

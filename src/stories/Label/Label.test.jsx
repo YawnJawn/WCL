@@ -19,14 +19,7 @@ describe('Label component Visibility Tests', () => {
         expect(labelElement).toBeVisible();
     });
 
-    test('Disabled Button has correct background color when disabled', () => {
-        render(<Label text="Default Button" disabled />);
-        const labelElement = screen.getByText(/Default Button/i);
-        expect(labelElement).toBeInTheDocument();
-        expect(labelElement).toBeVisible();
-    });
-
-    test('Disabled Button has correct background color when disabled', () => {
+    test('Disabled Label has correct background color when disabled', () => {
         render(<Label text="Disabled Label" disabled />);
         const labelElement = screen.getByText(/Disabled Label/i);
         expect(labelElement).toBeInTheDocument();
