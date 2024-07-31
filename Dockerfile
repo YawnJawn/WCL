@@ -2,7 +2,7 @@
 FROM node:18
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /Tran_Tin_ui_garden
 
 # Copy package.json and yarn.lock files
 COPY package.json yarn.lock ./
