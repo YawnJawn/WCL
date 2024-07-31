@@ -11,13 +11,6 @@ export default buttonStories;
 
 const Template = (args) => <Button {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Default Button',
-  primary: false,
-  disabled: false,
-};
-
 export const Primary = Template.bind({});
 Primary.args = {
   label: 'Primary Button',

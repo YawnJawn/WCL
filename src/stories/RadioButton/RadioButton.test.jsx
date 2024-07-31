@@ -1,39 +1,47 @@
-// RadioButton.test.js
+// RadioButton.test.jsx
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import RadioButton from './RadioButton';
 
-describe('RadioButton Component Tests', () => {
-  test('RadioButton is visible and displays the correct label', () => {
+describe('RadioButton Component', () => {
+  test('should be visible', () => {
     render(
       <RadioButton
-        label="Primary Radio Button"
+        options={[
+          { label: 'Option 1', value: 'option1' },
+          { label: 'Option 2', value: 'option2' },
+          { label: 'Option 3', value: 'option3' },
+        ]}
+        selectedValue="option1"
+        backgroundColor="lightblue"
         disabled={false}
+        onChange={() => {}}
       />
     );
 
-    // Check that the RadioButton is visible and displays the correct label text
-    const radioButtonElement = screen.getByText(/Primary Radio Button/i);
-    expect(radioButtonElement).toBeInTheDocument();
-    expect(radioButtonElement).toBeVisible();
+    // Check if all radio buttons are rendered and visible
+    expect(screen.getByLabelText('Option 1')).toBeVisible();
+    expect(screen.getByLabelText('Option 2')).toBeVisible();
+    expect(screen.getByLabelText('Option 3')).toBeVisible();
   });
 
-  test('Disabled RadioButton background color is gray', () => {
+  test('should have gray background when disabled', () => {
     render(
       <RadioButton
-        label="Disabled Radio Button"
+        options={[
+          { label: 'Option 1', value: 'option1' },
+          { label: 'Option 2', value: 'option2' },
+          { label: 'Option 3', value: 'option3' },
+        ]}
+        selectedValue="option1"
+        backgroundColor="lightblue"
         disabled={true}
+        onChange={() => {}}
       />
     );
 
-    // Check that the Disabled RadioButton is visible and displays the correct label text
-    const radioButtonElement = screen.getByText(/Disabled Radio Button/i);
-    expect(radioButtonElement).toBeInTheDocument();
-    expect(radioButtonElement).toBeVisible();
-
-    // Check the background color of the RadioButton
-    const styles = getComputedStyle(radioButtonElement);
-    expect(styles.backgroundColor).toBe('gray');
+    // Check the background color of the first radio button container
+    const radioButton = screen.getByLabelText('Option 1').parentElement;
+    expect(radioButton).toHaveStyle({ backgroundColor: 'gray' });
   });
 });

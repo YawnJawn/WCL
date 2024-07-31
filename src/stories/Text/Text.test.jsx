@@ -27,3 +27,6 @@ describe('Text Component Tests', () => {
     expect(styles.color).toBe('gray');
   });
 });
+
+
+

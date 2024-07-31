@@ -1,41 +1,62 @@
-// RadioButton.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
-import './RadioButton.css';
+import './RadioButton.css'; // Optional CSS for additional styling
 
-const RadioButton = ({ label, name, checked, onChange, disabled, backgroundColor }) => {
-  const styles = {
-    backgroundColor,
+const RadioButton = ({ options, backgroundColor, primary, disabled, selectedValue, onChange }) => {
+  const radioStyle = {
+    backgroundColor: disabled ? 'gray' : backgroundColor || 'white',
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    padding: '10px',
+    borderRadius: '5px',
+    border: '1px solid black',
+    display: 'inline-flex',
+    alignItems: 'center',
+  };
+
+  const textStyle = {
+    marginLeft: '8px',
+    color: disabled ? 'darkgray' : 'black',
   };
 
   return (
-    <label className="radio-button" style={styles}>
-      <input
-        type="radio"
-        name={name}
-        checked={checked}
-        onChange={onChange}
-        disabled={disabled}
-      />
-      <span className="radio-label">{label}</span>
-    </label>
+    <div>
+      {options && options.length > 0 && options.map((option) => (
+        <label key={option.value} style={radioStyle}>
+          <input
+            type="radio"
+            name="radio-buttons"
+            value={option.value}
+            checked={selectedValue === option.value}
+            onChange={() => onChange(option.value)}
+            disabled={disabled}
+            style={{ margin: '0' }}
+          />
+          <span style={textStyle}>{option.label}</span>
+        </label>
+      ))}
+    </div>
   );
 };
 
 RadioButton.propTypes = {
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  checked: PropTypes.bool,
-  onChange: PropTypes.func,
-  disabled: PropTypes.bool,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   backgroundColor: PropTypes.string,
+  primary: PropTypes.bool,
+  disabled: PropTypes.bool,
+  selectedValue: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
 };
 
 RadioButton.defaultProps = {
-  checked: false,
-  onChange: () => {},
+  backgroundColor: 'white',
+  primary: false,
   disabled: false,
-  backgroundColor: 'transparent',
+  selectedValue: '',
 };
 
 export default RadioButton;

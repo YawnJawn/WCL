@@ -53,7 +53,7 @@ Dropdown.defaultProps = {
   background: '',
   primary: false,
   disabled: false,
-  placeholder: 'Select an option',
+  placeholder: 'Choose',
 };
 
 export default Dropdown;
